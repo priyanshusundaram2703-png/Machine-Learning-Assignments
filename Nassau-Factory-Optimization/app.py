@@ -123,6 +123,8 @@ def factory_region_distance(factory, region):
 # LOAD DATA
 # =========================================================
 
+from pathlib import Path
+
 uploaded_file = st.sidebar.file_uploader(
     "Upload Nassau Candy Distributor CSV",
     type=["csv"]
@@ -130,17 +132,9 @@ uploaded_file = st.sidebar.file_uploader(
 
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
-
 else:
-    try:
-        df = pd.read_csv("Nassau Candy Distributor.csv")
-    except FileNotFoundError:
-        st.warning(
-            "Please upload 'Nassau Candy Distributor.csv' "
-            "from the sidebar."
-        )
-        st.stop()
-
+    data_path = Path(__file__).parent / "Nassau Candy Distributor.csv"
+    df = pd.read_csv(data_path)
 
 # =========================================================
 # DATA PREPARATION
