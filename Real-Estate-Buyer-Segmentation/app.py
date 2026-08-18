@@ -15,7 +15,10 @@ st.set_page_config(
 # -----------------------------
 # Load Dataset
 # -----------------------------
-df = pd.read_csv("buyer_segmentation_final.csv")
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+df = pd.read_csv(os.path.join(BASE_DIR, "buyer_segmentation_final.csv"))
 
 # -----------------------------
 # Title
